@@ -5,73 +5,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
-        <style>
-            button {
-                background-color: white;
-                border: 1px solid black;
-                box-shadow: 2px 2px darkgray;
-            }
-
-            button:active {
-                box-shadow: none;
-            }
-
-            ul {
-                width: 100%;
-                max-width: 500px;
-                list-style-type: none;
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 1.25rem;
-                padding: 0;
-            }
-
-            li {
-                width: 100%;
-                border: 1px solid lightgray;
-                padding: 1rem;
-                margin: .75rem 0;
-            }
-
-            .mr-1 {
-                margin-right: 1rem;
-            }
-        </style>
-
-        <script>
-            function createRow(text) {
-                var el = document.createElement('li');
-                if (text) {
-                    var textEl = document.createTextNode(text);
-                    el.appendChild(textEl);
-                }
-
-                return el;
-            }
-
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('create-rows')) {
-                    // get data
-                    const rowCount = parseInt(e.target.getAttribute('data-row-count'), 10);
-                    const rowText = e.target.getAttribute('data-row-text');
-                    const parentID = e.target.getAttribute('data-row-parent');
-
-                    // get container element
-                    var container = document.getElementById(parentID);
-
-                    // clear it
-                    container.innerHTML = '';
-
-                    // loop data-row-count times
-                    for(var i=0;i<rowCount;i++) {
-                        // create row element
-                        const row = createRow(rowText);
-
-                        // insert row element into container element
-                        container.appendChild(row);
-                    }
-                }
-            });
-        </script>
+        <link href="static/css/style.css" rel="stylesheet">
+        <script src="static/js/app.js"></script>
     </head>
 
     <body>
