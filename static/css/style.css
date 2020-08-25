@@ -4,8 +4,9 @@ button {
     box-shadow: 2px 2px darkgray;
 }
 
-button:active {
+button:hover {
     box-shadow: none;
+    cursor: pointer;
 }
 
 ul {
