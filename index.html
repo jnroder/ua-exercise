@@ -48,38 +48,27 @@
                 return el;
             }
 
-            document.addEventListener("DOMContentLoaded", function() {
-                // get buttons that create rows
-                const buttons = document.getElementsByClassName('create-rows');
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('create-rows')) {
+                    // get data
+                    const rowCount = parseInt(e.target.getAttribute('data-row-count'), 10);
+                    const rowText = e.target.getAttribute('data-row-text');
+                    const parentID = e.target.getAttribute('data-row-parent');
 
-                // loop through each button
-                // was going to use ES6 to iterate over them, but IE doesn't support it
-                //Array.from(buttons).forEach(function(button) {
-                for (var i = 0; i < buttons.length; i++) {
-                    var button = buttons[i];
+                    // get container element
+                    var container = document.getElementById(parentID);
 
-                    // attach our click event listener
-                    button.addEventListener('click', function(e) {
-                        // get data
-                        const rowCount = parseInt(e.target.getAttribute('data-row-count'), 10);
-                        const rowText = e.target.getAttribute('data-row-text');
-                        const parentID = e.target.getAttribute('data-row-parent');
+                    // clear it
+                    container.innerHTML = '';
 
-                        // get container element
-                        var container = document.getElementById(parentID);
+                    // loop data-row-count times
+                    for(var i=0;i<rowCount;i++) {
+                        // create row element
+                        const row = createRow(rowText);
 
-                        // clear it
-                        container.innerHTML = '';
-
-                        // 
-                        for(var i=0;i<rowCount;i++) {
-                            // create row element
-                            const row = createRow(rowText);
-
-                            // insert row element into container element
-                            container.appendChild(row);
-                        }
-                    });
+                        // insert row element into container element
+                        container.appendChild(row);
+                    }
                 }
             });
         </script>
